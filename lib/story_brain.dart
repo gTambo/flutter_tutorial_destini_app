@@ -51,26 +51,29 @@ class StoryBrain {
   int storyNumber = 0;
 
   void nextStory(int choiceNumber) {
-    switch (storyNumber) {
-      case 0:
-        (choiceNumber == 1) ? storyNumber = 2 : storyNumber = 1;
-        break;
-      case 1:
-        (choiceNumber == 1) ? storyNumber = 2 : storyNumber = 3;
-        break;
-      case 2:
-        (choiceNumber == 1) ? storyNumber = 5 : storyNumber = 4;
-        break;
-        // case 3:
-        //   break;
-        // case 4:
-        //   break;
-        // case 5:
-        break;
-      default:
-        restart();
-        break;
-    }
+    // switch (storyNumber) {
+    //   case 0:
+    //     (choiceNumber == 1) ? storyNumber = 2 : storyNumber = 1;
+    //     break;
+    //   case 1:
+    //     (choiceNumber == 1) ? storyNumber = 2 : storyNumber = 3;
+    //     break;
+    //   case 2:
+    //     (choiceNumber == 1) ? storyNumber = 5 : storyNumber = 4;
+    //     break;
+    //   default:
+    //     restart();
+    //     break;
+    // }
+    Map<int, List> storyPlan = {
+      0: [2, 1],
+      1: [2, 3],
+      2: [5, 4]
+    };
+    if (storyNumber < storyPlan.length) {
+      storyNumber = storyPlan[storyNumber]![choiceNumber - 1];
+    } else
+      storyNumber = 0;
   }
 
   void restart() {
